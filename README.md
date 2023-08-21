@@ -1,7 +1,7 @@
 # FBA_for_drug_target_identification
 
-Prerequisite and Installation
+## Prerequisite and Installation
 
-Usage 
+## Usage 
 
-License, Contact, Information
+## License, Contact, Information
