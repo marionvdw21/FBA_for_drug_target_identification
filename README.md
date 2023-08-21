@@ -2,7 +2,7 @@
 
 ## **Prerequisite and Installation** 
 
-## ** Usage **
+## **Usage**
 ### Make the model 
 This folder is used to make and validate a metabolic model, starting from a generic model such as Recon models. 
 The 'mainModel.py' script is the main script which calls the other functions in order to go from a generic model to a model adapted to a specific cell line. 
@@ -22,6 +22,6 @@ myModel = cobra.io.read_sblm_model('Recon3.xml')
 For each of the user-provided inputs, an example is given in the 'make_model' folder. 
 
 
-## Use the model for drug target prediction
+### Use the model for drug target prediction
 
 ## ** License, Contact, Information ** 
