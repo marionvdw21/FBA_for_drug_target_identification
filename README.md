@@ -24,4 +24,4 @@ For each of the user-provided inputs, an example is given in the 'make_model' fo
 
 ### Use the model for drug target prediction
 
-## ** License, Contact, Information ** 
+## **License, Contact, Information** 
