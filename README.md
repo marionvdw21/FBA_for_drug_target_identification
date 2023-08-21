@@ -17,7 +17,7 @@ import cobra
 myModel = cobra.io.read_sblm_model('Recon3.xml')
 ```
 
-- 'expression.txt' : a text file containing the gene names and their associated expression in the cell line of interest cells (log2 read counts)
+- 'expression.txt' : a text file containing the gene names and their associated expression in the cell line of interest cells (log2 read counts).
 
 - 'minimal_media.txt' : a text file containing the reaction ids of the import and export reactions that are allowed in order to create the desired media.
 
