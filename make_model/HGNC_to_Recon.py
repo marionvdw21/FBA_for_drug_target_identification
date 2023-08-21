@@ -1,4 +1,26 @@
-def HGNC_to_Recon_converter(ExpressionFile, myModel): 
+def HGNC_to_Recon_converter(inputFile, myModel): 
+	
+	'''
+	U S A G E : 
+	Convert gene names from a file written in HGNC to Bigg ID (which is almost the same as EntrezID)
+
+	I N P U T S : 
+	--> inputFile : A tab delimited text file with the gene name as the first colomn of each row. 
+		An example of such as file is the 'expression.txt' file. 
+
+	--> myModel : a metabolic model of class cobra.core.Model. It is used to determined if the converted genes 
+		are in the model or not. 
+
+	O U T P U T : 
+	--> A tab delimited text file with each HGNC gene name switched for the Bigg ID, and the rest of the file remaining the same. 
+		Only the genes that are found in the inputed model (myModel) will be part of the ouputed file. 
+		For example, if an input file contains 50 lines corresponding to 50 genes, but only 30 of those genes are in Recon3 (which would be 
+		the inputed model), then the ouput file would contain only those 30 lines. 
+		The name of the outputed file is the same as the inputed file, followed by the suffix '_Recon'. 
+
+	'''
+	
+	
 	import numpy as np
 	import re
 	import cobra.io as co
@@ -6,6 +28,7 @@ def HGNC_to_Recon_converter(ExpressionFile, myModel):
 				
 	model = myModel
 	
+	# Making lists from the target text file
 	with open('table.txt', mode = 'r') as table: 
 		HGNC_names_table = []
 		EntrezID_list = []
@@ -18,7 +41,8 @@ def HGNC_to_Recon_converter(ExpressionFile, myModel):
 			previous_symbols.append(lines_split[4])
 			EntrezID_list.append(lines_split[6])
 	
-	with open(ExpressionFile, mode = 'r') as CRISPR_data_new: 
+
+	with open(inputFile, mode = 'r') as CRISPR_data_new: 
 		new_lines = []
 		k = 0
 		found2 = 0
@@ -28,14 +52,13 @@ def HGNC_to_Recon_converter(ExpressionFile, myModel):
 		
 		for lines in CRISPR_data_new : 	
 			k += 1
-			vache = 0
+			control = 0
 			EntrezID = ''
 			lines_split = lines.split('\t')
-			HGNC_name = (lines_split[0])	#change depending on file
+			HGNC_name = (lines_split[0])
 			if HGNC_name in HGNC_names_table: 
 				index = HGNC_names_table.index(HGNC_name)
 				EntrezID = EntrezID_list[index]
-				#new_lines.append(lines.replace(HGNC_name, EntrezID))
 				
 			elif HGNC_name in previous_symbols: 
 				index = previous_symbols.index(HGNC_name)
@@ -57,7 +80,6 @@ def HGNC_to_Recon_converter(ExpressionFile, myModel):
 						previous[j] = re.sub(',', '', previous[j])
 					if HGNC_name in previous : 
 						EntrezID = EntrezID_list[i]
-						#new_lines.append(lines.replace(HGNC_name, EntrezID))
 						found = 1
 						
 						break
@@ -68,13 +90,12 @@ def HGNC_to_Recon_converter(ExpressionFile, myModel):
 							alias[j] = re.sub(',', '', alias[j])
 						if HGNC_name in alias: 
 							EntrezID = EntrezID_list[i]
-							#new_lines.append(lines.replace(HGNC_name, EntrezID))
 							found = 1
 
 							break
 				if found == 0 and HGNC_name[0:3] == 'LOC' : #all those genes that start with 'LOC'
 					EntrezID = HGNC_name[3:]
-					vache = 1
+					control = 1
 					found = 1
 				if found == 0 : 
 					if HGNC_name == 'FLJ44635': 
@@ -106,7 +127,6 @@ def HGNC_to_Recon_converter(ExpressionFile, myModel):
 				if found == 0 : 
 					EntrezID = HGNC_name
 					unmatched.append(HGNC_name)
-					#new_lines.append(lines)
 				
 					
 	
@@ -114,15 +134,14 @@ def HGNC_to_Recon_converter(ExpressionFile, myModel):
 			if BiGGID in model.genes: 
 				found2 += 1
 				new_lines.append(lines.replace(HGNC_name, BiGGID))
-				if vache == 1: 
+				if control == 1: 
 					print(HGNC_name)
 
-	
-				
-	#choosing a relevant name for the output file 
+	#choosing output file name 
 	assayName =  ExpressionFile[0:-4]
 	OutputFileName = '%(assayName)s_Recon.txt' %{'assayName': assayName} 			
-			
+
+	#writing the output file 		
 	with open(OutputFileName, 'w') as file:
 		for genes in range(len(new_lines)):
 			file.write(new_lines[genes])  
@@ -131,4 +150,4 @@ def HGNC_to_Recon_converter(ExpressionFile, myModel):
 	
 
 if __name__ == '__main__': 
-	HGNC_to_Recon_converter(ExpressionFile, myModel)
+	HGNC_to_Recon_converter(InputFile, myModel)
