@@ -1,11 +1,40 @@
 def fisherTest(inputFileList, experimental_essentiality, theCutoff, expCutoff, alternative): 
 
+    '''
+    U S A G E : 
+    This function compare the gene essentiality predicted from single gene deletion to the experimental gene essentiality
+    An example of usage is provided at the end. 
+
+    I N P U T : 
+    --> inputFileList : a list containing the name(s) of the input file. The input file should be a file outputed from the 'Essentiality_prediction' script, 
+        with the most essential gene first and least essential last. 
+        An example is provided as 'EssPred.txt'
+    --> experimental_essentiality : a tab delimited text file with each line containing the name of the gene and the rank score for essentiality. 
+        If the original experimental essentiality file has the gene names as HGNC symbols, it can be passed through the 
+        'HGNC_to_Recon' script. 
+        An example is provided as 'essentiality_Recon.txt'. 
+    --> theCutoff : the cuttof delimiting essential from non-essential genes, regarding the predicted essentiality using single gene deletion (files in 'inputFileList'). 
+        If theCutoff = 200, then the genes positioned from 0-199 (in the files from inputFileList) will be considered essential, 
+        and the positionned below or equal to 200 will be considered non-essential. 
+        It is recommanded to use a cutoff above which the deletion of the associated genes impact minimally the biomass production. 
+    --> expCutoff : the cutoff delimiting essential from non-essential genes, regading the experimental essentiality (experimental essentiality file). 
+        Expcutoff is a rank score value. For example if the cutoff is -4, then genes having a rank score below -4 will be considered 
+        essential, and the genes having a rank score above -4 will be considered non-essential. 
+    --> alternative : 'below', 'greater', or 'two-sided'. The nature of the p-value that will be calculated. 
+
+    O U T P U T : 
+    --> p-value : the p-value resulting from a fisher test on the 2x2 contigency table : 
+        [[predicted essential and experimentally essential,     predicted essential but experimentally non-essential]
+        [predicted non-essential but experimentally essential,  predicted non-essential and experimentally non-essential]]
+    --> A figure showing the distribution of each gene, according to its predicted and experimental essentiality. 
+
+    '''
     import converter5
     import scipy.stats 
     import numpy as np
     from matplotlib import pyplot as plt
     import matplotlib
-    allToatDict = converter5.allToat()
+    allToatDict = converter5.allToat() # this lines makes the gene name go from [36_AT1, 36_AT2, 36_AT3] to '36_AT1' so that it is cmparable to the experimental essentiality. 
     essNames = []
     essRank = []
 
@@ -53,8 +82,7 @@ def fisherTest(inputFileList, experimental_essentiality, theCutoff, expCutoff, a
                             temp.append(essRank[index])
                             NN.append(temp)
                             NNn.append(name)
-                    #if inputFile == 'EssPred-MOMA-NALM.txt' and count < 1700 and count > 1000 and float(essRank[index]) < -3: 
-                    #        cluster.append(name)
+
                     
                     
         table = np.array([[len(EEn), len(ENn)], [len(NEn), len(NNn)]])
@@ -83,7 +111,8 @@ def fisherTest(inputFileList, experimental_essentiality, theCutoff, expCutoff, a
     return 
 
 if __name__ == '__main__': 
-    fileList = ['EssPred2.txt']
+    # example of usage : 
+    fileList = ['EssPred.txt']
     fisherTest(fileList, 'essentiality_Recon.txt', 200, -4, 'two-sided')
 
 
