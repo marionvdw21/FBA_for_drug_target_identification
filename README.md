@@ -6,7 +6,7 @@
 
 Using metabolic modeling for drug target prediction requires : 
 1) Adapting and validating a model from a generic model
-2) Using this model to attemps drug target prediction.
+2) Using this model to attempt drug target prediction.
 
 Hence, the scripts are divided into two folders, which can be used separately.
 
