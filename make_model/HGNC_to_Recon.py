@@ -3,6 +3,7 @@ def HGNC_to_Recon_converter(inputFile, myModel):
 	'''
 	U S A G E : 
 	Convert gene names from a file written in HGNC to Bigg ID (which is almost the same as EntrezID)
+	Example of usage provided at the end. 
 
 	I N P U T S : 
 	--> inputFile : A tab delimited text file with the gene name as the first colomn of each row. 
@@ -150,4 +151,6 @@ def HGNC_to_Recon_converter(inputFile, myModel):
 	
 
 if __name__ == '__main__': 
-	HGNC_to_Recon_converter(InputFile, myModel)
+	# example of usage : 
+	import cobra.io as co
+	HGNC_to_Recon_converter(InputFile = 'expression.txt', myModel=co.read_sbml_model('Recon3.xml'))
