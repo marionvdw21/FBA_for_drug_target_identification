@@ -31,6 +31,6 @@ For each of the user-provided inputs, an example is given in the 'make_model' fo
 
 ## **License, Contact, Information** 
 
-chemogenomics data sets from : Jasmin Coulombe-Huntington,Thierry Bertomeu, Caroline Huard, Corinne St-Denis, Andrew Chatr-Aryamontri, Daniel St-Cyr, Mike Tyers. In preparation.
+Chemogenomics data sets from : Jasmin Coulombe-Huntington,Thierry Bertomeu, Caroline Huard, Corinne St-Denis, Andrew Chatr-Aryamontri, Daniel St-Cyr, Mike Tyers. In preparation.
 
 
