@@ -1,25 +1,23 @@
-
-
 def PredictEss(FileName, OutFileName):
+
+    '''
+    U S A G E : 
+    Function used to order a cell's gene expression file, as a function of the gene's expression.
+    An example of usage if provided at the end. 
+    I N P U T : 
+    --> fileName : a tab delimited text file outputed from the 'single_gene_deletion' script. 
+        An example is provided as 'allSingleGeneDel.txt'. 
+    --> outFileName : the name given to the output file.
+
+    O U T P U T : 
+    --> 'outFileName.txt' : a tab delimited text file ordered from most essential to least essential gene, 
+        based on the biomass production resulting from single gene deletion. 
+        
+    '''
     import time 
     from collections import namedtuple
     from operator import attrgetter
     from bisect import bisect, insort
-
-    '''
-    ~~~ purpose ~~~
-        Ordering a file containing fluxes as a result of single gene deletion, in order to predict gene essentiality 
-        based on flux thru 'BIOMASS_maintenance' reaction. 
-
-    ~~~ objects ~~~
-    myList 
-        myList - reducedExp. 
-        list of genes that are going to be ranked for essentiality (i.e. NALM6 genes w\ those that got
-        turned down).
-    reducedExp 
-        list of gene names whose expression got turned down/knocked out for simulating NALM6 model. 
-
-    '''
 
     def is_float(string): 
         try : 
@@ -74,6 +72,7 @@ def PredictEss(FileName, OutFileName):
     return 
 
 if __name__ == '__main__': 
+    # example of usage : 
     PredictEss('allSingleGeneDel.txt', 'EssPred.txt')
 
 
