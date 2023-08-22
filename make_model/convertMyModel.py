@@ -1,11 +1,30 @@
 def convertMyModel(fileName, myModel): 
 
     '''
-        choices of input file (fileName): 
-        --> expression_Recon.txt 
-        --> expression_Recon_ordered2.txt 
-        --> expression_Recon_deordered2.txt 
+    U S A G E : 
+    The usage is to modify a generic metabolic model, such as Recon3, so that is it resembles a specific cell line, 
+    of which the expression file is provided. The way the generic model is modified is by changing the upper and lower 
+    bounds of the reaction fluxes, accoding to the exponential function ub = (0.1*exp(0.6908*t))/100, in which 
+    ub is the percentage of the original bound that will be applied to the new model, and t is the expression of the 
+    associated gene. 
+    An example of usage is provided at the end. 
 
+    I N P U T S : 
+    --> fileName : the expression file of the cell line. An example is provided as 'expression.txt'. As some genes share 
+    the same reactions, the order in which the reaction bounds is modified matters. 
+        choices of input file (fileName): 
+        - expression_Recon.txt 
+        - expression_Recon_ordered.txt 
+        - expression_Recon_deordered.txt 
+
+    --> myModel : generic model, which will be modified, of class cobra.core.Model.
+
+    O U T P U T S : 
+    --> adapted_model : class cobra.core.Model. It is the input model with the reaction flux boundaries modified according to the 
+        expression file. 
+    --> geneList : a list of genes of the adapted model, of form [[26_AT1], [314_AT1, 314_AT2], [6768_AT1], [332_AT1, 332_AT2, 332_AT3], ...]
+    --> sol : the solution of the modified model once it is optimized for maximum biomass production. 
+        The solution corresponds to the flux passing through the reaction 'BIOMASS_maintenance'. 
     '''
 
     def is_float(string): 
@@ -112,5 +131,6 @@ def convertMyModel(fileName, myModel):
     return adapted_model, geneList, sol
 
 if __name__ == '__main__':
+    # example of usage: 
     import cobra.io as co
     convertMyModel('expression_Recon_ordered2.txt', co.read_sbml_model('Recon3.xml'))
