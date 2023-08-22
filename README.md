@@ -3,6 +3,13 @@
 ## **Prerequisite and Installation** 
 
 ## **Usage**
+
+Using metabolic modeling for drug target prediction requires : 
+1) Adapting and validating a model from a generic model
+2) Using this model to attemps drug target prediction.
+
+Hence, the scripts are divided into two folders, which can be used separately.
+
 ### Make the model 
 This folder is used to make and validate a metabolic model, starting from a generic model such as Recon models. 
 The 'mainModel.py' script is the main script which calls the other functions in order to go from a generic model to a model adapted to a specific cell line. 
