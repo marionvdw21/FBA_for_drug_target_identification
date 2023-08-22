@@ -1,4 +1,26 @@
 def singleGeneDeletion(myModel):
+
+	'''
+	U S A G E : 
+	the singleGeneDeletion() function take a given metabolic model and performs a single gene deletion simulation 
+	for every gene in the model, and then optimizes this new model to maximize biomass production. 
+
+	I N P U T : 
+	--> myModel : the cobra.core.Model for which the single gene deletion needs to be executed. 
+
+	O U T P U T : 
+	--> 'allSingleGeneDel.txt' : a text file containing, for each gene in the model, the name of the gene and 
+		the resulting biomass production upon deletion of this gene. For each gene, two deletion simulations are made : 
+		1. the reactions associated to this gene are knocked out to 10% of their original value 
+		2. the reactions associated to this are completely knocked out (upper and lower bounds of (0, 0)). 
+		The outputed text file is of format : 
+		name of knocked out gene | biomass production when 10% knocked out | time taken to simulate 10% knock out (seconds) | biomass production when total knock out | time taken to simulate total knockout (seconds)
+
+	Note : Performing single gene deletion simulation for all the genes in the model can be very long, especially when 
+	dealing with large metabolic models such as Recon model. 
+	'''
+
+
 	#should take about 6h to run for all Recon3 genes. 
 	import cobra
 	import cobra.flux_analysis 
@@ -27,8 +49,6 @@ def singleGeneDeletion(myModel):
 					allATs.append(gene2)
 			geneList2.append(allATs)
 
-
-	totTotTime = 0
 	newLines = []
 	string = ''
 	string += 'WT' + '\t' + str(model.optimize()) #line for original model
@@ -47,16 +67,15 @@ def singleGeneDeletion(myModel):
 	
 		#looping over reactions > looping over genes 
 		for KOgene in KOgenes: 
-			#genesrxn = newModel.genes.get_by_id(KOgene.id).reactions 
 			genesrxn = newModel.genes.get_by_id(KOgene).reactions
 			for reaction in genesrxn : 
-				reaction.lower_bound = model.reactions.get_by_id(reaction.id).lower_bound*0.1
+				reaction.lower_bound = model.reactions.get_by_id(reaction.id).lower_bound*0.1 #setting the lower bound of the rxn to 10% of that of the WT. 
 				reaction.upper_bound = model.reactions.get_by_id(reaction.id).upper_bound*0.1 #setting the upper bound of the rxn to 10% of that of the WT. 
 		newModel.optimize()
 		sol = newModel.reactions.BIOMASS_maintenance.flux
 		string += str(KOgenes) + '\t' + str(sol) + '\t' + str(time.time()-start_time1)
 
-		#TECHNIQUE 2 : regular KO
+		#TECHNIQUE 2 : regular (total) KO
 		start_time2 = time.time()
 		newModel2 = model.copy()
 		for KOgene in KOgenes: 
@@ -69,13 +88,9 @@ def singleGeneDeletion(myModel):
 		string += '\t' + str(sol2) + '\t' + str(time.time() - start_time2) 
 		newLines.append(string)
 	
-		#totTime = time.time() - start_time1
-		#totTotTime += totTime
-		
-	print(totTotTime)
-	#Writing in Output File 
 
-	OutputFileName = 'allSingleGeneDel.txt'  
+	#Writing in Output File 
+	OutputFileName = 'allSingleGeneDel.txt'  # can change ouputFileName
 	with open(OutputFileName, 'w') as file : 
 		for lines in range(len(newLines)):
 			file.write(str(newLines[lines])) 
@@ -84,4 +99,6 @@ def singleGeneDeletion(myModel):
 	return open(OutputFileName, 'r')
 
 if __name__ == '__main__': 
+	# example of usage : 
+	import cobra.io as co
 	singleGeneDeletion(co.read_sbml_model('Recon3.txt'))
