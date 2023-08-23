@@ -38,6 +38,12 @@ For each of the user-provided inputs, an example is given in the 'make_model' fo
 
 ### Use the model for drug target prediction
 
+Once the model is made similar to the cell line with which the CRISPR screens have been done, it can be used to try to predict drug targets. 
+For each drug, double gene deletions of every CRISPR hit of that drug VS all the other genes of the model will be performed in every pairs possible. 
+The genes that are suspected to be interacting with CRISPR hits of that drug are considered candidate targets for that drug. An assesment of wether or not the true target was in the list of candidate target for that drug will be made, an a p-value will be associated to it. 
+
+Many functions are involved in the above process. Unfortunately, there is no main function calling all of the others yet, partly because some of these functions take a very long time to execute, so it is better to divide them up. However, there is a pdf explaining how all of these functions call each other and how they should be used in the 'target_prediction' folder, under the name 'function_explanation'. 
+
 ## **License, Contact, Information** 
 
 Chemogenomics data sets from : Jasmin Coulombe-Huntington,Thierry Bertomeu, Caroline Huard, Corinne St-Denis, Andrew Chatr-Aryamontri, Daniel St-Cyr, Mike Tyers. In preparation.
