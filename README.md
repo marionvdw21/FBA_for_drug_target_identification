@@ -44,6 +44,7 @@ The genes that are suspected to be interacting with CRISPR hits of that drug are
 
 Many functions are involved in the above process. Unfortunately, there is no main function calling all of the others yet, partly because some of these functions take a very long time to execute, so it is better to divide them up. However, there is a pdf explaining how all of these functions call each other and how they should be used in the 'target_prediction' folder, under the name 'function_explanation'. 
 
+
 ## **License, Contact, Information** 
 
 Chemogenomics data sets from : Jasmin Coulombe-Huntington,Thierry Bertomeu, Caroline Huard, Corinne St-Denis, Andrew Chatr-Aryamontri, Daniel St-Cyr, Mike Tyers. In preparation.
