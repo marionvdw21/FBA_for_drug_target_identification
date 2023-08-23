@@ -9,6 +9,11 @@ def atToall():
           '36_AT1'
 
     The model is assumed to be Recon3, but that can be changed at line 15. 
+    
+    N O T E  : 
+    In order for this function to work, you will need to download the 'Recon3.xml' metabolic model (from http://bigg.ucsd.edu/models/Recon3D) 
+    and have it in the same repository as this function. 
+
     '''
 
     model = co.read_sbml_model('Recon3.xml')
