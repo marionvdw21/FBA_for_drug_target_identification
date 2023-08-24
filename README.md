@@ -5,7 +5,9 @@
 ## **Prerequisite and Installation** 
 
 Make sure you have the correct [requirements](https://github.com/marionvdw21/FBA_for_drug_target_identification/blob/main/requirements.txt) and download the 'make_model' and 'drug_target_prediction' folders. 
-You can then use the functions as described by the 
+You can then use the functions as described by the ['make_model' function explanation file](https://github.com/marionvdw21/FBA_for_drug_target_identification/blob/main/make_model/function_explanation_model.pdf) and the ['drug_target_prediction' function explanation file](https://github.com/marionvdw21/FBA_for_drug_target_identification/blob/main/drug_target_prediction/function_explanation.pdf). 
+
+For the 'make_model' folder, you can either run the function separately according to the function explanation file, or simply run the ['main_model.py' script](https://github.com/marionvdw21/FBA_for_drug_target_identification/blob/main/make_model/main_model.py). 
 
 ## **Usage**
 
