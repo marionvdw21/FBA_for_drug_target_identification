@@ -4,6 +4,8 @@
 
 ## **Prerequisite and Installation** 
 
+You can download the 'make_model' and 'predict_target' folders on your local machine. Make sure yu have the correct [requirements](https://github.com/marionvdw21/FBA_for_drug_target_identification/blob/main/requirements.txt).  
+
 ## **Usage**
 
 Using metabolic modeling for drug target prediction requires : 
