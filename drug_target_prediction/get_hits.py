@@ -44,6 +44,7 @@ def getHits(directory, directory2 = 'none'):
         for i in range(len(allHIT)) : 
             if allHIT[i] not in doneGenes: 
                 string = ''
+                # the 'something' could be anything, as long as there is no '\n' after the gene's BiggID
                 string += str(allHIT[i]) + '\t' + 'something'
                 toDoGenes.append(string)
     
@@ -57,6 +58,6 @@ def getHits(directory, directory2 = 'none'):
 
 if __name__ == '__main__': 
     # example of usage
-    directory = r'/home/marion/projects/def-jch/marion/CRANKS_HITS_RECON'
-    directory2 = r'/home/marion/projects/def-jch/marion'
+    directory = r'C:\Users\mario\OneDrive\Documents\SURE\CRANKS_HITS_RECON'
+    directory2 = r'C:\Users\mario\OneDrive\Documents\SURE'
     getHits(directory, directory2)
