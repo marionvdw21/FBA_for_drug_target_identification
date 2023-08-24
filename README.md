@@ -4,7 +4,7 @@
 
 ## **Prerequisite and Installation** 
 
-You can download the 'make_model' and 'predict_target' folders on your local machine. Make sure yu have the correct [requirements](https://github.com/marionvdw21/FBA_for_drug_target_identification/blob/main/requirements.txt).  
+Make sure you have the correct [requirements](https://github.com/marionvdw21/FBA_for_drug_target_identification/blob/main/requirements.txt) and download the 'make_model' and ''
 
 ## **Usage**
 
