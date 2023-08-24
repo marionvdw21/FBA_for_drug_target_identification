@@ -47,6 +47,13 @@ Many functions are involved in the above process. Unfortunately, there is no mai
 
 ## **License, Contact, Information** 
 
-Chemogenomics data sets from : Jasmin Coulombe-Huntington,Thierry Bertomeu, Caroline Huard, Corinne St-Denis, Andrew Chatr-Aryamontri, Daniel St-Cyr, Mike Tyers. In preparation.
+### Acknowledgments 
+The cell line expression data and essentiality data ('essentiality.txt' and 'expression.txt') are provided by : Bertomeu, T., Coulombe-Huntington, J., Chatr-aryamontri, A., Bourdages, K. G., Coyaud, E., Raught, B., Xia, Y., &amp; Tyers, M. (2018). A high-resolution genome-wide CRISPR/Cas9 viability screen reveals structural features and contextual diversity of the Human Cell-Essential Proteome. Molecular and Cellular Biology, 38(1). https://doi.org/10.1128/mcb.00302-17 
+
+We gratefully acknowledge support from McGill's Summer Undergraduate Research in Engineering programm. 
+
+### Contact Information
+
+email : marion.vandewynckele-bossut@mail.mcgill.ca
 
 
