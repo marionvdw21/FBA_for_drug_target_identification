@@ -1,31 +1,28 @@
-import cobra.io as co
 
 def atToall():
-    
-    human = r"C:\Users\mario\OneDrive\Documents\SURE\Recon3.xml"
-    model = co.read_sbml_model(human)
 
-    geneList = [] # geneList : [26_AT1, 103_AT1, 103_AT2, ...]
-    for i in range(len(model.genes)): 
-        geneList.append(str(model.genes[i]))
+    '''
+    U S A G E : 
+    This function create a dictionary in order to go from Bigg IDs written in this manner: 
+         '['36_AT1', '36_AT2', '36_AT3']' 
+    to BiGG IDs written in this manner : 
+          '36_AT1'
+
+    
+    N O T E  : 
+    The model is assumed to be Recon3, but that can be changed by changing the lines in the file 'atToallDict.txt'. 
+
+    '''
 
     atToallDict = {}
-    for gene in geneList: 
-        if gene[-3:] == 'AT1': 
-                allATs = []
-                allATs.append(gene)
-                geneName = gene[:-3]
-                AT = 1
-                for i in range(20): 
-                    AT += 1
-                    gene2 = '%(geneName)sAT%(AT)s' %{'geneName': geneName, 'AT': AT}
-                    if gene2 in geneList : 
-                        allATs.append(gene2)
-                atToallDict[gene] = allATs
-    
+    with open('atToallDict.txt', 'r') as file : 
+         for lines in file : 
+              atToallDict[lines.split('\t')[0]] = lines.split('\t')[1]
+         
     return atToallDict
 
 def allToat(): 
+
     allToatDict = {}
     atToallDict = atToall()
     for key in atToallDict:
@@ -34,5 +31,5 @@ def allToat():
     return allToatDict
 
 if __name__ == '__main__': 
-     atToall()
-     allToat()
+     atToallDict = atToall()
+     allToatDict = allToat()
