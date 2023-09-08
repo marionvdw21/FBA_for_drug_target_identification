@@ -12,7 +12,6 @@ def fisherTest(inputFileList, experimental_essentiality, theCutoff, expCutoff, a
     --> experimental_essentiality : a tab delimited text file with each line containing the name of the gene and the rank score for essentiality. 
         If the original experimental essentiality file has the gene names as HGNC symbols, it can be passed through the 
         'HGNC_to_Recon' script. 
-        An example is provided as 'essentiality_Recon.txt'. 
     --> theCutoff : the cuttof delimiting essential from non-essential genes, regarding the predicted essentiality using single gene deletion (files in 'inputFileList'). 
         If theCutoff = 200, then the genes positioned from 0-199 (in the files from inputFileList) will be considered essential, 
         and the positionned below or equal to 200 will be considered non-essential. 
