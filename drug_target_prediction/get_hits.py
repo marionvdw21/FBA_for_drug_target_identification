@@ -15,7 +15,8 @@ def getHits(directory, directory2 = 'none'):
         The directory2 is the directory in which those files of already-done double gene deletion would be stored. 
 
     O U T P U T S : 
-    --> 'list_of_hits_example.txt' : a tab-delimited text file with each line containing the name of a CRISPR hit gene that should undergo double-gene-deletion. 
+    --> 'list_of_hits.txt' : a tab-delimited text file with each line containing the name of a CRISPR hit gene that should undergo double-gene-deletion. 
+        An example of such a file is provided under 'list_of_hits_example.txt'. 
 
     '''
 
