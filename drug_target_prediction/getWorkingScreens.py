@@ -10,7 +10,7 @@ def getWorkingScreens(myTargets_Recon, directory_interactions):
     --> myTargets_Recon : a tab-delimited text file containing the associations between the drug screens names and 
         their associated gene targets (in BiGG id). The Bigg ids should be in the first column, and the name of the screen
         (without any suffix such as '_hits' or 'hits_targets') in the second column. 
-        An example is provided as 'myTargets_Recon.txt'. 
+        An example is provided as 'myTargets_Recon_example.txt'. 
     --> directory_interactions : the directory of the folder containing all the interaction files ('drugXXX_interaction.txt'). The genes in those files
         are the candidate target genes. Those files can be issues from the 'get_interactions.py' script. 
 
