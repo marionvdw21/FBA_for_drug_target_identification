@@ -14,7 +14,7 @@ def inverseSignature(directory_interactions, directory_hits_recon):
 
     I N P U T : 
     --> directory_interactions : the directory of the folder containing all the interaction files ('drugXXX_interaction.txt'). The genes in those files
-        are the candidate target genes. Those files can be issues from the 'get_interactions.py' script. 
+        are the candidate target genes. Those files can be issued from the 'get_interactions.py' script. 
     --> directory_hits_recon : the directory of the folder containing all the hits (in BiGG id) of the CRISPR screens. Those files should be tab-delimited text files, 
         and can be issues from the 'screen_converter.py' script. It is those files that will help us determine if an interaction between a gene and a screen is considered true or not. 
 
