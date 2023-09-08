@@ -8,7 +8,7 @@ def getHits(directory, directory2 = 'none'):
 
     I N P U T S : 
     --> directory : the directory of the folder containing all the CRISPR screens. The files in the folder should have the genes in BiGG id, 
-        and only the genes present in the model should be in the CRISPR screens. An example of such a file is provided as '42oC_hits_Recon'. Only the first column, 
+        and only the genes present in the model should be in the CRISPR screens. An example of such a file is provided as 'screen_name_hits_Recon.txt'. Only the first column, 
         containing the gene's BiGG ID, matters.  
         Such files can be outputed from the 'screen_converter.py' script. 
     --> directory2 (optional) : if some double gene deletions have already been made on some of the CRISPR hits, the function avoids doing them again. 
