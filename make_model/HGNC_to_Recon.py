@@ -7,7 +7,7 @@ def HGNC_to_Recon_converter(inputFile, myModel):
 
 	I N P U T S : 
 	--> inputFile : A tab delimited text file with the gene name as the first colomn of each row. 
-		An example of such as file is the 'expression.txt' file. 
+		An example of such as file is the 'expression_example.txt' file. 
 
 	--> myModel : a metabolic model of class cobra.core.Model. It is used to determined if the converted genes 
 		are in the model or not. 
