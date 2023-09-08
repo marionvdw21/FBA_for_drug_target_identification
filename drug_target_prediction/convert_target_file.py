@@ -2,7 +2,7 @@ def convert_target_file(fileName, model):
 
     '''
     U S A G E : 
-    This function converts a file containing drugs screen names and their associated targets to another file (named 'myTargets_Recon.txt') 
+    This function converts a file containing drugs screen names and their associated targets to another file (named 'myTargets_Recon_example.txt') 
     that can be read by the script 'getWorkingScreens.py'. 
 
     I N P U T S : 
@@ -16,13 +16,14 @@ def convert_target_file(fileName, model):
         |   screen name     drug name   target|target             | 
         |_________________________________________________________|
 
-        An example is provided as 'target_table.txt'
+        An example is provided as 'target_table_example.txt'
 
     --> model : the metabolic model of class cobra.core.Model. 
 
     O U T P U T S : 
     --> 'myTargets_Recon.txt' : a tab delimited txt file that can be used in the 'getWorkingScreens.py' script. 
         The fist column contains molecular targets in BiGG id, and the second column contains the name of their associated screen. 
+        An example of such as file is provided under 'myTargets_Recon_example.txt'. 
     '''
 
     import HGNC_to_Recon
