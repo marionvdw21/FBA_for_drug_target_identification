@@ -10,7 +10,7 @@ def convertMyModel(fileName, myModel):
     An example of usage is provided at the end. 
 
     I N P U T S : 
-    --> fileName : the expression file of the cell line. An example is provided as 'expression.txt'. As some genes share 
+    --> fileName : the expression file of the cell line. An example is provided as 'expression_example.txt'. As some genes share 
     the same reactions, the order in which the reaction bounds is modified matters. 
         choices of input file (fileName): 
         - expression_Recon.txt 
