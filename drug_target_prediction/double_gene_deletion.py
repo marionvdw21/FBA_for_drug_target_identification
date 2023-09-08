@@ -9,7 +9,7 @@ def double_gene_deletion(fileName, myModel):
     I N P U T : 
     --> fileName : the name of the file containing all the CRISPR hits that should undergo double gene deletion. It could be outputed from 
         the 'get_hits.py' script, as 'list_of_hits.txt'. It should be a tab-deliited txt file with the gene's Bigg id in first column
-        An example is provided as 'list_of_hits.txt'. 
+        An example is provided as 'list_of_hits_example.txt'. 
     --> myModel : the metabolic model, of class cobra.core.Model. 
 
     O U T P U T : 
